@@ -35,7 +35,7 @@ AUC as reported in the notebook outputs. The synthetic defect sets range from -5
 | -30 dB | 0.520 | 0.519 | 0.614 | 0.662 |
 
 - **Sequence models detect strong defects well.** The LSTM residual detector stays above 0.90 AUC down to -20 dB, then falls to near chance (0.5) at -25 and -30 dB.
-- **The transformer separates the real defect sets.** On the six real defect recordings (d1 to d6) it reaches an AUC of 1.000 for all six.
+- **The transformer separates the real defect sets.** On the six real defect recordings (d1 to d6) it reaches an AUC of 1.000 for all six. A perfect score is unusual, so it is worth re-checking that the defects are simply easy to separate and that no test data leaked into training.
 - **Graph classifiers are weaker and flat across noise levels** (GCN about 0.61, GAT about 0.66), so they were kept as exploration rather than the main method.
 
 ## Repository layout
@@ -68,6 +68,7 @@ Notebooks read their data from `../data`, so launch Jupyter from the repository 
 
 - The training and defect recordings are not redistributed, so the notebooks cannot be run end to end without the course data pack.
 - The NARX and LSTM evaluation on the six real defect sets printed repeated values in the saved outputs (for example 0.78125 for all six in the LSTM notebook), which points to an evaluation issue; treat those figures as inconclusive.
+- The transformer's perfect AUC on the real defect sets has not been independently verified (see Results).
 - The graph models were trained on very few labelled signals.
 - The notebooks are research logs, not packaged code.
 
